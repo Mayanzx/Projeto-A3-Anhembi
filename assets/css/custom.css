@@ -1,0 +1,182 @@
+/* Fonte base e tema - Paleta Halloween/Gótica */
+/* Sistema de temas: usamos [data-theme="dark"|"light"] no elemento html */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  --bg:#1a0f0a;
+  --surface:#2a1810;
+  --text:#f5e6d3;
+  --muted:#c9a675;
+  --primary:#ff8c42;
+  --primary-strong:#ff6b1a;
+  --accent:#8b4789;
+  --halloween-orange:#ff8c42;
+  --plague-mask:#e8d4b0;
+  --glass:rgba(255,140,66,.08);
+  background: radial-gradient(1200px 800px at 70% -10%, rgba(255,140,66,.12), transparent 50%), 
+              radial-gradient(800px 600px at 30% 90%, rgba(139,71,137,.08), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+html[data-theme="light"],
+html[data-theme="light"] body{
+  --bg:#fff8ed;
+  --surface:#ffffff;
+  --text:#3d2817;
+  --muted:#9b7b5a;
+  --primary:#ff7a2e;
+  --primary-strong:#e66516;
+  --accent:#9b5a99;
+  --halloween-orange:#ff8c42;
+  --plague-mask:#f0dcc4;
+  --glass:rgba(255,122,46,.08);
+  background: 
+    radial-gradient(1200px 800px at 30% 0%, rgba(255,165,94,.15), transparent 50%),
+    radial-gradient(1000px 700px at 70% 100%, rgba(155,90,153,.08), transparent 60%),
+    linear-gradient(180deg, #fff8ed 0%, #fffaf5 50%, #ffffff 100%);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{ font-family: "Montserrat", ui-sans-serif; }
+.fw-extrabold{ font-weight: 800; }
+.text-muted-contrast{ color: var(--muted) !important; }
+
+/* Ajustes Bootstrap padrão para modo claro/escuro */
+html[data-theme="light"] .navbar{ 
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,248,237,.85));
+  border-bottom: 1px solid rgba(255,122,46,.12);
+}
+html[data-theme="light"] .navbar .nav-link{ color: var(--text); }
+html[data-theme="light"] .navbar .nav-link:hover{ color: var(--primary); }
+html[data-theme="light"] .navbar.navbar-dark .navbar-brand{ color: var(--primary-strong); font-weight: 700; }
+html[data-theme="light"] .feature-card{ 
+  border-color: rgba(255,122,46,.2); 
+  background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,248,237,.6));
+  box-shadow: 0 4px 12px rgba(255,122,46,.08);
+}
+html[data-theme="light"] .timeline-content{ 
+  border-color: rgba(255,122,46,.25); 
+  background: rgba(255,250,245,.9);
+  box-shadow: 0 2px 8px rgba(255,122,46,.06);
+}
+html[data-theme="light"] footer{ 
+  background: linear-gradient(180deg, transparent, rgba(255,165,94,.08));
+  border-top: 1px solid rgba(255,122,46,.1);
+}
+html[data-theme="light"] .glass{ 
+  border-color: rgba(255,122,46,.2); 
+  background: linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,250,245,.7));
+  box-shadow: 0 8px 24px rgba(255,122,46,.12);
+}
+/* Botões temáticos */
+html[data-theme="dark"] .btn-primary{ background-color: var(--primary); border-color: var(--primary); color:#fff; }
+html[data-theme="dark"] .btn-primary:hover, html[data-theme="dark"] .btn-primary:focus{ background-color: var(--primary-strong); border-color: var(--primary-strong); }
+html[data-theme="light"] .btn-primary{ background-color: var(--primary); border-color: var(--primary); color:#fff; }
+html[data-theme="light"] .btn-primary:hover, html[data-theme="light"] .btn-primary:focus{ background-color: var(--primary-strong); border-color: var(--primary-strong); }
+/* Outline primário adaptado */
+.btn-outline-primary{ color: var(--primary); border-color: var(--primary); }
+.btn-outline-primary:hover, .btn-outline-primary:focus{ background: var(--primary); color:#fff; }
+/* Outline do toggle tema (light/dark) ajustado por tema */
+html[data-theme="dark"] #modeToggle.btn-outline-light{ color: var(--text); border-color: rgba(255,255,255,.6); }
+html[data-theme="dark"] #modeToggle.btn-outline-light:hover{ background: var(--primary); border-color: var(--primary); }
+html[data-theme="light"] #modeToggle{ color: var(--text); }
+html[data-theme="light"] #modeToggle.btn-outline-dark{ border-color: rgba(0,0,0,.45); }
+html[data-theme="light"] #modeToggle.btn-outline-dark:hover{ background: var(--primary); color:#fff; border-color: var(--primary); }
+
+/* Navbar vidro */
+.glass-nav{
+  background: linear-gradient(180deg, rgba(42,24,16,.92), rgba(42,24,16,.65));
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,140,66,.15);
+}
+
+/* Hero - Atmosfera Halloween */
+.hero-section{ position: relative; }
+.hero-title{ 
+  text-shadow: 0 4px 20px rgba(255,140,66,.6), 0 8px 40px rgba(0,0,0,.5);
+  color: var(--halloween-orange);
+}
+.hero-card{ 
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(42,24,16,.8) 100%);
+  border: 2px solid rgba(255,140,66,.2);
+}
+.hero-bg-gradient{
+  position: absolute; inset: -10% -10% auto -10%; height: 60%;
+  background: radial-gradient(800px 400px at 20% 10%, rgba(255,140,66,.25), transparent 60%),
+              radial-gradient(600px 500px at 80% 20%, rgba(139,71,137,.15), transparent 70%);
+  pointer-events: none;
+}
+.hero-grid{
+  position: absolute; inset: 0; pointer-events: none; opacity:.05;
+  background-image: 
+    linear-gradient(transparent 23px, rgba(255,140,66,.12) 24px), 
+    linear-gradient(90deg, transparent 23px, rgba(255,140,66,.12) 24px);
+  background-size: 24px 24px; 
+  mask-image: radial-gradient(60% 60% at 50% 50%, black 65%, transparent 100%);
+}
+
+/* Seções */
+.section-pad{ padding: 80px 0; }
+.bg-surface{ background: var(--surface); }
+.section-title{ font-weight: 800; letter-spacing:.3px;}
+html[data-theme="dark"] #suggestionMsg {
+  color: #fff;
+}
+html[data-theme="light"] #suggestionMsg {
+  color: #1e2635;
+}
+html[data-theme="dark"] .section-title{
+  color: var(--halloween-orange);
+  text-shadow: 0 3px 16px rgba(255,140,66,.4), 0 1px 4px rgba(0,0,0,.3);
+}
+html[data-theme="light"] .section-title{
+  color: var(--primary-strong);
+  text-shadow: 0 2px 8px rgba(255,107,26,.2);
+}
+
+/* Lista de features (história) */
+.feature-list .feature-icon{
+  width: 36px; height: 36px; border-radius: 10px; display: inline-grid; place-items: center; font-weight: 700;
+}
+
+/* Cards de features - Paleta Halloween */
+.feature-card{
+  background: linear-gradient(180deg, rgba(255,140,66,.08), rgba(42,24,16,.4));
+  border: 1px solid rgba(255,140,66,.15);
+  border-radius: 16px; padding: 24px; position: relative; overflow: hidden;
+}
+.feature-card .feature-badge{
+  position: absolute; top: -24px; right: -24px; width: 120px; height: 120px; border-radius: 50%; filter: blur(12px); opacity: .7;
+}
+.bg-gradient-1{ background: radial-gradient(circle at 30% 30%, #ff8c42, transparent 60%), radial-gradient(circle at 70% 70%, #ffa55e, transparent 60%), linear-gradient(120deg, rgba(255,140,66,.5), rgba(255,165,94,.3)); }
+.bg-gradient-2{ background: radial-gradient(circle at 30% 30%, #8b4789, transparent 60%), radial-gradient(circle at 70% 70%, #a05ea0, transparent 60%), linear-gradient(120deg, rgba(139,71,137,.5), rgba(160,94,160,.3)); }
+.bg-gradient-3{ background: radial-gradient(circle at 30% 30%, #e8d4b0, transparent 60%), radial-gradient(circle at 70% 70%, #d4b896, transparent 60%), linear-gradient(120deg, rgba(232,212,176,.5), rgba(212,184,150,.3)); }
+.bg-gradient-4{ background: radial-gradient(circle at 30% 30%, #ff6b1a, transparent 60%), radial-gradient(circle at 70% 70%, #ff8c42, transparent 60%), linear-gradient(120deg, rgba(255,107,26,.5), rgba(255,140,66,.3)); }
+.bg-gradient-5{ background: radial-gradient(circle at 30% 30%, #c9a675, transparent 60%), radial-gradient(circle at 70% 70%, #b8935e, transparent 60%), linear-gradient(120deg, rgba(201,166,117,.5), rgba(184,147,94,.3)); }
+.bg-gradient-6{ background: radial-gradient(circle at 30% 30%, #9b5a99, transparent 60%), radial-gradient(circle at 70% 70%, #8b4789, transparent 60%), linear-gradient(120deg, rgba(155,90,153,.5), rgba(139,71,137,.3)); }
+
+/* Timeline - Tema Halloween */
+.timeline{ display: grid; gap: 24px; position: relative; }
+.timeline:before{ content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background: rgba(255,140,66,.2);}
+.timeline-item{ display:flex; gap:16px; align-items:flex-start; }
+.timeline-dot{ width:24px; height:24px; border-radius:50%; border:2px solid var(--halloween-orange); flex-shrink:0; box-shadow: 0 0 8px rgba(255,140,66,.4); }
+.timeline-content{ background: rgba(255,140,66,.08); border:1px solid rgba(255,140,66,.15); border-radius:12px; padding:12px 16px; }
+
+/* Glass card - Halloween */
+.glass{ background: linear-gradient(180deg, rgba(255,140,66,.12), rgba(42,24,16,.6)); border:1px solid rgba(255,140,66,.2); backdrop-filter: blur(10px); border-radius: 16px; }
+
+/* Footer - Halloween */
+footer{ background: linear-gradient(180deg, transparent, rgba(255,140,66,.05)); }
+
+/* Utilidades */
+.rounded-4{ border-radius: 1rem!important; }
+
+/* Responsividade */
+@media (max-width: 991.98px){
+  .section-pad{ padding: 64px 0; }
+}
+@media (max-width: 575.98px){
+  .section-pad{ padding: 56px 0; }
+  .hero-title{ font-size: 2.2rem; }
+}
