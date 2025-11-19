@@ -46,7 +46,6 @@
           <p class="lead text-muted-contrast mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas voluptatum doloribus maiores hic animi numquam magni dignissimos pariatur delectus molestias libero laboriosam, quasi autem? Voluptas nihil sit dolorem explicabo officia.</p>
           <div class="d-flex gap-2 justify-content-center justify-content-lg-start mt-4">
             <a href="#trailer" class="btn btn-primary btn-lg">Assistir Trailer</a>
-            <a href="#newsletter" class="btn btn-outline-primary btn-lg">Receber novidades</a>
           </div>
         </div>
         <div class="col-lg-5 mt-5 mt-lg-0">
@@ -320,5 +319,27 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <!-- Botão flutuante Equipe -->
+  <button id="teamBtn" type="button" class="btn btn-primary floating-btn" data-bs-toggle="modal" data-bs-target="#teamModal" aria-label="Ver participantes do projeto">Equipe</button>
+
+  <!-- Modal: Participantes do Projeto -->
+  <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content team-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="teamModalLabel">Participantes do Projeto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted-contrast mb-2">Lista com 10 participantes:</p>
+          <ul id="teamList" class="list-group list-group-flush"></ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

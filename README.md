@@ -1,6 +1,6 @@
 # Site do Jogo (Bootstrap + Responsivo)
 
-Este projeto é um site one-page para apresentar o seu jogo com foco em estética moderna, performance e responsividade. Ele usa Bootstrap 5 via CDN e estilos customizados.
+Este projeto é um site one-page com foco em estética moderna, performance e responsividade. Ele usa Bootstrap 5 via CDN e estilos customizados.
 
 ## Como usar
 
@@ -40,8 +40,3 @@ Este projeto é um site one-page para apresentar o seu jogo com foco em estétic
 - Incluir seção Equipe e Créditos.
 - Internacionalização (i18n) com arquivos de tradução simples.
 - Otimizar assets (WebP/AVIF) e metas de SEO (Open Graph/Twitter Cards).
-
-## Licenças
-
-- Bootstrap 5 (MIT). Fontes Google Fonts conforme termos do Google.
-- As imagens SVG de placeholder são livres para você substituir e adaptar no projeto.

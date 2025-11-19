@@ -67,7 +67,7 @@ if(devlogList){
   devlogList.innerHTML = entries.map(e => `\n    <article class="devlog-entry p-3 rounded-3 mb-2">\n      <h6 class="mb-1">${e.title}</h6>\n      <small class="text-muted">${e.date}</small>\n      <p class="mb-0 text-muted-contrast small">${e.text}</p>\n    </article>`).join('');
 }
 
-// Lazy loading improvement for non-supported browsers (fallback)
+// Lazy loading polyfill para navegadores antigos
 if('loading' in HTMLImageElement.prototype === false){
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     const src = img.getAttribute('data-src');
@@ -87,3 +87,42 @@ internalLinks.forEach(link => {
     }
   });
 });
+
+// Lista de participantes no modal (aceita objetos {name, photo, role})
+const defaultParticipants = [
+  { name:'Mayan',    role:'Site',              photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Tirone',   role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Lucas',    role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Heitor',   role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Eduarda',  role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Gabriel',  role:'Testes',            photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Theo',     role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Luiz',     role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Sabrina',  role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
+  { name:'Adrielle', role:'Documentação',      photo:'assets/img/team/avatar-placeholder.svg' }
+];
+const participants = (Array.isArray(window.PROJECT_PARTICIPANTS) && window.PROJECT_PARTICIPANTS.length === 10)
+  ? window.PROJECT_PARTICIPANTS.map(p => ({ name: p.name || p, role: p.role || 'Membro da equipe', photo: p.photo || 'assets/img/team/avatar-placeholder.svg' }))
+  : defaultParticipants;
+
+function populateTeamList(){
+  const teamList = document.getElementById('teamList');
+  if(!teamList) return;
+  teamList.innerHTML = participants.map((p, idx) => `
+    <li class="list-group-item">
+      <div class="d-flex align-items-center gap-3">
+        <img class="team-avatar" src="${p.photo}" alt="Foto de ${p.name}">
+        <div>
+          <div class="team-name">${p.name}</div>
+          <div class="small text-muted-contrast team-role">${p.role || 'Membro da equipe'}</div>
+        </div>
+      </div>
+    </li>
+  `).join('');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', populateTeamList);
+}else{
+  populateTeamList();
+}
