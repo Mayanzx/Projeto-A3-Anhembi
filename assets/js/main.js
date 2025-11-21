@@ -90,16 +90,16 @@ internalLinks.forEach(link => {
 
 // Lista de participantes no modal (aceita objetos {name, photo, role})
 const defaultParticipants = [
-  { name:'Mayan',    role:'Site',              photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Tirone',   role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Lucas',    role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Heitor',   role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Eduarda',  role:'Desenvolvedor',  photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Gabriel',  role:'Testes',            photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Theo',     role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Luiz',     role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Sabrina',  role:'UX',                photo:'assets/img/team/avatar-placeholder.svg' },
-  { name:'Adrielle', role:'Documentação',      photo:'assets/img/team/avatar-placeholder.svg' }
+{ name: 'Geovane Mayan Loures Bertolini',               role: 'Front-End',        photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Eduarda Tobias Fernandes',                   role: 'Desenvolvedora',   photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Heitor Henrique dos Santos',                 role: 'Desenvolvedor',    photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Lucas da Costa Lima',                        role: 'Desenvolvedor',    photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Lucas Tirone da Silva',                      role: 'Desenvolvedor',    photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Luiz Felipe de Alvarenga Borges da Fonseca', role: 'UX/UI',            photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Sabrina Giacon Damiani',                     role: 'UX/UI',            photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Theo Teixeira da Silva',                     role: 'UX/UI',            photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Gabriel Cesar Santana',                      role: 'Testes',           photo: 'assets/img/team/avatar-placeholder.svg' },
+  { name: 'Adrielle Pereira Dantas da Silva',           role: 'Documentação',     photo: 'assets/img/team/avatar-placeholder.svg' }
 ];
 const participants = (Array.isArray(window.PROJECT_PARTICIPANTS) && window.PROJECT_PARTICIPANTS.length === 10)
   ? window.PROJECT_PARTICIPANTS.map(p => ({ name: p.name || p, role: p.role || 'Membro da equipe', photo: p.photo || 'assets/img/team/avatar-placeholder.svg' }))
