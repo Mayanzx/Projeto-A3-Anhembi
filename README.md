@@ -12,7 +12,6 @@ Este projeto é um site one-page com foco em estética moderna, performance e re
 ## Seções
 
 - Hero com título, call-to-actions e arte principal
-- Trailer (iframe YouTube/Vimeo)
 - História/Lore com bullet points
 - Recursos (cards com badges gradientes)
 - Screenshots (carrossel Bootstrap)

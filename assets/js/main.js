@@ -60,9 +60,9 @@ if(suggestionForm && suggestionMsg){
 const devlogList = document.getElementById('devlogList');
 if(devlogList){
   const entries = [
-    { title:'Progresso de combate', date:'2025-10-02', text:'Refinamos animações e feedback visual de impacto.' },
-    { title:'Protótipo de crafting', date:'2025-09-18', text:'Sistema básico de recursos e raridades.' },
-    { title:'Primeiro chefe', date:'2025-09-01', text:'Lutas multi-fase com padrões telegrafados.' }
+    { title:'Adição de mecânicas de movimento', date:'2025-11-20', text:'Implementamos novas mecânicas de escalada e movimentação fluida pelo cenário.' },
+    { title:'Melhoria do menu', date:'2025-11-15', text:'Interface redesenhada com navegação intuitiva e visual aprimorado.' },
+    { title:'Suavização das animações', date:'2025-11-10', text:'Ajustes nas transições e animações de personagens para maior fluidez.' }
   ];
   devlogList.innerHTML = entries.map(e => `\n    <article class="devlog-entry p-3 rounded-3 mb-2">\n      <h6 class="mb-1">${e.title}</h6>\n      <small class="text-muted">${e.date}</small>\n      <p class="mb-0 text-muted-contrast small">${e.text}</p>\n    </article>`).join('');
 }
