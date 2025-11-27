@@ -1,0 +1,128 @@
+// Alternância real de tema claro/escuro usando data-theme no <html>
+const modeBtn = document.getElementById('modeToggle');
+const htmlEl = document.documentElement;
+const savedTheme = localStorage.getItem('site-theme');
+if(savedTheme){ htmlEl.setAttribute('data-theme', savedTheme); }
+updateModeButtonLabel();
+
+modeBtn?.addEventListener('click', () => {
+  const current = htmlEl.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  htmlEl.setAttribute('data-theme', next);
+  localStorage.setItem('site-theme', next);
+  updateModeButtonLabel();
+});
+
+function updateModeButtonLabel(){
+  if(!modeBtn) return;
+  const current = htmlEl.getAttribute('data-theme');
+  modeBtn.textContent = `Tema: ${current === 'light' ? 'Claro' : 'Escuro'}`;
+  // Troca classe outline conforme tema para contraste ideal
+  if(current === 'light'){
+    modeBtn.classList.remove('btn-outline-light');
+    modeBtn.classList.add('btn-outline-dark');
+  }else{
+    modeBtn.classList.remove('btn-outline-dark');
+    modeBtn.classList.add('btn-outline-light');
+  }
+}
+
+// Ano dinâmico
+const yearSpan = document.getElementById('year');
+yearSpan && (yearSpan.textContent = new Date().getFullYear());
+
+// Sugestões (Formspree)
+const suggestionForm = document.getElementById('suggestionForm');
+const suggestionMsg = document.getElementById('suggestionMsg');
+if(suggestionForm && suggestionMsg){
+  suggestionForm.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    suggestionMsg.textContent = 'Enviando...';
+    const formData = new FormData(suggestionForm);
+    fetch(suggestionForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(r => r.json()).then(data => {
+      if(data.ok){
+        suggestionMsg.textContent = 'Sugestão enviada com sucesso! Obrigado.';
+        suggestionForm.reset();
+      }else{
+        suggestionMsg.textContent = 'Erro ao enviar. Tente novamente mais tarde.';
+      }
+    }).catch(() => {
+      suggestionMsg.textContent = 'Erro ao enviar. Tente novamente mais tarde.';
+    });
+  });
+}
+
+// Devlog placeholder
+const devlogList = document.getElementById('devlogList');
+if(devlogList){
+  const entries = [
+    { title:'Adição de mecânicas de movimento', date:'2025-11-20', text:'Implementamos novas mecânicas de escalada e movimentação fluida pelo cenário.' },
+    { title:'Melhoria do menu', date:'2025-11-15', text:'Interface redesenhada com navegação intuitiva e visual aprimorado.' },
+    { title:'Suavização das animações', date:'2025-11-10', text:'Ajustes nas transições e animações de personagens para maior fluidez.' }
+  ];
+  devlogList.innerHTML = entries.map(e => `\n    <article class="devlog-entry p-3 rounded-3 mb-2">\n      <h6 class="mb-1">${e.title}</h6>\n      <small class="text-muted">${e.date}</small>\n      <p class="mb-0 text-muted-contrast small">${e.text}</p>\n    </article>`).join('');
+}
+
+// Lazy loading polyfill para navegadores antigos
+if('loading' in HTMLImageElement.prototype === false){
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    const src = img.getAttribute('data-src');
+    if(src) img.src = src;
+  });
+}
+
+// Suave scroll para links internos
+const internalLinks = document.querySelectorAll('a[href^="#"]');
+internalLinks.forEach(link => {
+  link.addEventListener('click', ev => {
+    const id = link.getAttribute('href').substring(1);
+    const target = document.getElementById(id);
+    if(target){
+      ev.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 72, behavior:'smooth'});
+    }
+  });
+});
+
+// Lista de participantes no modal (aceita objetos {name, photo, role})
+const defaultParticipants = [
+{ name: 'Geovane Mayan Loures Bertolini',               role: 'Front-End',        photo: 'assets/img/team/mayan.png' },
+  { name: 'Eduarda Tobias Fernandes',                   role: 'Desenvolvedora',   photo: 'assets/img/team/duda.png' },
+  { name: 'Heitor Henrique dos Santos',                 role: 'Desenvolvedor',    photo: 'assets/img/team/heitor.png' },
+  { name: 'Lucas da Costa Lima',                        role: 'Desenvolvedor',    photo: 'assets/img/team/lucas.png' },
+  { name: 'Lucas Tirone da Silva',                      role: 'Desenvolvedor',    photo: 'assets/img/team/tirone.png' },
+  { name: 'Luiz Felipe de Alvarenga Borges da Fonseca', role: 'UX/UI',            photo: 'assets/img/team/luiz.png' },
+  { name: 'Sabrina Giacon Damiani',                     role: 'UX/UI',            photo: 'assets/img/team/sabrina.png' },
+  { name: 'Theo Teixeira da Silva',                     role: 'UX/UI',            photo: 'assets/img/team/theo.png' },
+  { name: 'Gabriel Cesar Santana',                      role: 'Testes',           photo: 'assets/img/team/gabriel.png' },
+  { name: 'Adrielle Pereira Dantas da Silva',           role: 'Documentação',     photo: 'assets/img/team/adrielle.png' }
+];
+const participants = (Array.isArray(window.PROJECT_PARTICIPANTS) && window.PROJECT_PARTICIPANTS.length === 10)
+  ? window.PROJECT_PARTICIPANTS.map(p => ({ name: p.name || p, role: p.role || 'Membro da equipe', photo: p.photo || 'assets/img/team/avatar-placeholder.svg' }))
+  : defaultParticipants;
+
+function populateTeamList(){
+  const teamList = document.getElementById('teamList');
+  if(!teamList) return;
+  teamList.innerHTML = participants.map((p, idx) => `
+    <li class="list-group-item">
+      <div class="d-flex align-items-center gap-3">
+        <img class="team-avatar" src="${p.photo}" alt="Foto de ${p.name}">
+        <div>
+          <div class="team-name">${p.name}</div>
+          <div class="small text-muted-contrast team-role">${p.role || 'Membro da equipe'}</div>
+        </div>
+      </div>
+    </li>
+  `).join('');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', populateTeamList);
+}else{
+  populateTeamList();
+}
